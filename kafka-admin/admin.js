@@ -23,4 +23,4 @@ async function createTopic(topicName) {
   await admin.disconnect();
 }
 
-createTopic("login-failed");
+createTopic("login-events");

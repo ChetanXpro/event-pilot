@@ -9,7 +9,7 @@ cd ../
 
 
 echo "Waiting for Kafka to be ready..."
-sleep 5
+sleep 3
 
 
 echo "Starting the Node.js monitoring service..."

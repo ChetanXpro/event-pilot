@@ -12,11 +12,14 @@ async function init() {
   console.log("Producer Connected!");
 
   await producer.send({
-    topic: "login-failed",
+    topic: "login-events",
     messages: [
       {
-        key: "login-failed",
-        value: "Login Failed!",
+        key: "login-events",
+        value: JSON.stringify({
+          loginStatus: "success",
+          message: "Invalid Credentials",
+        }),
       },
     ],
   });
