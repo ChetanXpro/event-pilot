@@ -17,7 +17,7 @@ async function init() {
       {
         key: "login-events",
         value: JSON.stringify({
-          loginStatus: "success",
+          loginStatus: "failed",
           message: "Invalid Credentials",
         }),
       },

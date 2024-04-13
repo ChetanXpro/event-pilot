@@ -33,8 +33,6 @@ class LoginFailureMonitoringService extends BaseMonitoringService {
 	private async evaluateAndReset() {
 		const failureRate = this.totalLogins > 0 ? this.failedLogins / this.totalLogins : 0
 
-		console.log('DEBUG', failureRate, LoginFailureMonitoringService.FAILURE_RATE_THRESHOLD)
-
 		if (parseFloat((failureRate * 100).toFixed(2)) > LoginFailureMonitoringService.FAILURE_RATE_THRESHOLD) {
 			console.log(`Alert: High login failure rate detected. Rate: ${(failureRate * 100).toFixed(2)}%`)
 			this.sendAlert('slack', `High login failure rate detected. Rate: ${(failureRate * 100).toFixed(2)}%`)
