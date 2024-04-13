@@ -7,10 +7,11 @@ class LoginFailureMonitoringService extends BaseMonitoringService {
 	private failedLogins = 0
 	private totalLogins = 0
 	private static FAILURE_RATE_THRESHOLD = 10
+	private intervalId: NodeJS.Timeout
 
 	constructor(topic: string, dbConnectionString: string, kafkaBrokers: string[], monitoringInterval: number) {
 		super(topic, dbConnectionString, kafkaBrokers)
-		setInterval(() => this.evaluateAndReset(), monitoringInterval)
+		this.intervalId = setInterval(() => this.evaluateAndReset(), monitoringInterval)
 	}
 
 	protected async processMessage({ message }: EachMessagePayload): Promise<void> {
@@ -53,6 +54,10 @@ class LoginFailureMonitoringService extends BaseMonitoringService {
 
 		this.failedLogins = 0
 		this.totalLogins = 0
+	}
+
+	stop() {
+		clearInterval(this.intervalId)
 	}
 }
 
