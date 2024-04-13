@@ -1,12 +1,12 @@
-# Realtime Monitoring Service
+# EventPilot
 
-The Realtime Monitoring Service is an adaptable platform designed for real-time monitoring and analysis of various service events. Utilizing Kafka for event handling and MongoDB for data storage, the architecture supports seamless addition of new monitoring services through a base abstract class.
+EventPilot is a dynamic platform designed for real-time monitoring and analysis of service events. Utilizing Kafka for event handling and MongoDB for data storage, the architecture allows seamless integration of new monitoring services through a base abstract class.
 
 ## Key Components
 
-- **Monitor Service**: Captures and processes events, utilizing a scalable Kafka setup.
-- **Kafka Admin**: Manages Kafka configuration including server startup and topic creation.
-- **Login Failure Monitoring**: Monitors and analyzes login attempts, calculates failure rates, and triggers alerts if thresholds are exceeded.
+- **Monitor Service**: Efficiently captures and processes events using a scalable Kafka setup.
+- **Kafka Admin**: Manages Kafka configurations, including server startups and topic creation.
+- **Login Failure Monitoring**: Analyzes login attempts, calculates failure rates, and triggers alerts if thresholds are exceeded.
 
 ## Architecture Overview
 
