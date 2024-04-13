@@ -4,9 +4,10 @@ EventPilot is a dynamic platform designed for real-time monitoring and analysis 
 
 ## Key Components
 
-- **Monitor Service**: Efficiently captures and processes events using a scalable Kafka setup.
-- **Kafka Admin**: Manages Kafka configurations, including server startups and topic creation.
-- **Login Failure Monitoring**: Analyzes login attempts, calculates failure rates, and triggers alerts if thresholds are exceeded.
+- **/monitor-service**: Monitors events from different services.
+- **/kafka-admin**: Manages Kafka server setup and creates topics for monitoring.
+- **/admin-dashboard**: A Next.js frontend that displays near-real-time charts for login failures.
+
 
 ## Architecture Overview
 
