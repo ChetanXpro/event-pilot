@@ -1,16 +1,16 @@
 import BaseMonitoringService from './BaseMonitoringService'
 import { EachMessagePayload } from 'kafkajs'
 import LoginFailureSummary from '../models/LoginFailureSummary'
-import { LoginStatusType } from './enums'
+import { AlertType, LoginStatusType } from './enums'
 
 class LoginFailureMonitoringService extends BaseMonitoringService {
 	private failedLogins = 0
 	private totalLogins = 0
 	private static FAILURE_RATE_THRESHOLD = 10
 
-	constructor(topic: string, dbConnectionString: string, kafkaBrokers: string[]) {
+	constructor(topic: string, dbConnectionString: string, kafkaBrokers: string[], monitoringInterval: number) {
 		super(topic, dbConnectionString, kafkaBrokers)
-		setInterval(() => this.evaluateAndReset(), 60000)
+		setInterval(() => this.evaluateAndReset(), monitoringInterval)
 	}
 
 	protected async processMessage({ message }: EachMessagePayload): Promise<void> {
@@ -34,7 +34,10 @@ class LoginFailureMonitoringService extends BaseMonitoringService {
 
 		if (parseFloat((failureRate * 100).toFixed(2)) > LoginFailureMonitoringService.FAILURE_RATE_THRESHOLD) {
 			console.log(`Alert: High login failure rate detected. Rate: ${(failureRate * 100).toFixed(2)}%`)
-			this.sendAlert('slack', `High login failure rate detected. Rate: ${(failureRate * 100).toFixed(2)}%`)
+			this.sendAlert(
+				AlertType.SLACK,
+				`High login failure rate detected. Rate: ${(failureRate * 100).toFixed(2)}%`
+			)
 		}
 
 		// if (this.failedLogins > 0) {
