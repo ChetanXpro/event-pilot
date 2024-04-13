@@ -1,4 +1,3 @@
-// LoginFailureMonitoringService.ts
 import BaseMonitoringService from './BaseMonitoringService'
 import { EachMessagePayload } from 'kafkajs'
 import LoginFailureSummary from '../models/LoginFailureSummary'

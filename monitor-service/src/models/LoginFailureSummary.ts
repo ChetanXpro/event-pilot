@@ -1,4 +1,3 @@
-// models/LoginFailureSummary.ts
 import { Schema, model } from 'mongoose'
 
 interface ILoginFailureSummary {
