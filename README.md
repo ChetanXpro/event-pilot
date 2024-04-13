@@ -66,28 +66,34 @@ npm install
 npm run dev
 ```
 
-## Usage
-
+### Usage
 Once the services are operational, the system will actively monitor specified events. Results are logged and stored, with alerts based on predefined conditions.
-
-To access and interact with the system:
-
-1. **Admin Dashboard**:
-   - Visit `http://localhost:3000` to access the ReactJS-based admin dashboard.
-   - The dashboard displays real-time visualizations of the data, including login attempts and failure rates.
-
-2. **Monitoring Service Logs**:
-   - Monitor the console logs from the `monitor-service` to see real-time processing details and debug information.
-
-3. **Kafka Administration**:
-   - Use Kafka tooling to manage topics and view message streams to ensure that events are being properly captured and streamed.
-
-### Example Usage Scenario
-
-- **Monitoring Login Attempts**:
-  - As the system processes login events, you will see updates on the dashboard reflecting the number of attempts and failure rates.
-  - If the failure rate exceeds the threshold set in `LoginFailureMonitoringService`, an alert will be sent out and displayed or logged according to the configured response in the service.
 
 ### Alerts
 
 - Alerts can be configured to be sent through different channels such as Slack or Discord, depending on the severity and type of event detected. Ensure your alert channels are properly configured in the `BaseMonitoringService` for effective notifications.
+
+
+
+### Extending the System
+To add a new monitoring service:
+
+1. Extend the BaseMonitoringService class.
+2. Implement the processMessage method with your custom logic.
+3. Configure Kafka topics as needed.
+
+Example template for a new service:
+
+```javascript
+import BaseMonitoringService from './BaseMonitoringService';
+
+class CustomMonitoringService extends BaseMonitoringService {
+    protected processMessage(payload) {
+        // Insert custom processing logic here.
+    }
+}
+
+
+```
+
+
