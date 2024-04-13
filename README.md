@@ -96,4 +96,8 @@ class CustomMonitoringService extends BaseMonitoringService {
 
 ```
 
+### Contributing
+
+Contributions are welcome! Please fork the repository and submit pull requests with your enhancements or fixes.
+
 
